@@ -1,0 +1,19 @@
+module.exports = {
+  devServer:{
+    host:'localhost',
+    port:8318,
+    proxy:{
+      '/api':{
+        target:'http://api.proguyssc.com',
+        changeOrigin:true,
+        pathRewrite:{
+          '/api':''
+        }
+      }
+    }
+  },
+  productionSourceMap:true,
+  chainWebpack:(config)=>{
+    config.plugins.delete('prefetch');
+  }
+}
